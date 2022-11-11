@@ -19,7 +19,8 @@ This is a project I created for my bachelor thesis. It is intended to determine 
 - Peoplecounting
 - Humidity measurement
 - Temperature measurement
-- Usage detection
+- Usage detection of Rooms and Furniture
+- Visualisation of Data
 - Based on open Hardware and Software
 
 
