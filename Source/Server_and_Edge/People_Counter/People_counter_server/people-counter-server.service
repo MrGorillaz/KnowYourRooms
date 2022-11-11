@@ -1,0 +1,13 @@
+[Unit]
+Description=People Counter Server Service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 -u /opt/people-counter-server/people-counter-server.py
+StandardOutput=file:/var/log/people-counter-server/service.log
+StandardError=file:/var/log/people-counter-server/error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

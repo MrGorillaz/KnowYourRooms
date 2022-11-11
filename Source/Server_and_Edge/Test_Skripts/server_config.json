@@ -1,0 +1,41 @@
+{
+    
+    "genaral_config": {
+                        "start_hour": 6,
+                        "end_hour": 22,
+                        "influencer": [
+                                        "testroom/sensor/people_counter/count",
+                                        "testroom/sensor/room/pir"
+                                    ]
+                        },
+
+    "mqtt_conifg":  {
+                    "mqtt_server": "192.168.178.36",
+                    "mqtt_port" : 1883,
+                    "mqtt_timeout": 60,
+                    "mqtt_subs": [
+                                    ["testroom/sensor/se_lab_hopper/usage",0],
+                                    ["testroom/sensor/se_lab_hopper/rssi",0],
+                                    ["testroom/sensor/se_lab_table/usage",0],
+                                    ["testroom/sensor/se_lab_table/rssi",0],
+                                    ["testroom/sensor/se_lab_board/usage",0],
+                                    ["testroom/sensor/se_lab_board/rssi",0],
+                                    ["testroom/sensor/people_counter/count",0],
+                                    ["testroom/sensor/room/usage",0],
+                                    ["testroom/sensor/room/temperature",0],
+                                    ["testroom/sensor/room/airquality",0],
+                                    ["testroom/sensor/room/pir",0]
+                                    ],
+                    "mqtt_qos" : 0
+                    },
+    
+    "influxdb_config" : {
+                        "influxdb_server" : "192.168.178.36",
+                        "influxdb_port" : 8086,
+                        "influxdb_api_token" : "cWFmcPImcclW0cnGn9ewKmYQxxXiNSJsPfHDMapNhGFqQfTrN7cIW9HVUOYusl-ujof1jtWSEDx0o9NRl7yHhw==",
+                        "influx_bucket":"sensor_data",
+                        "influx_org":"sedus"
+                        }
+    
+    
+}

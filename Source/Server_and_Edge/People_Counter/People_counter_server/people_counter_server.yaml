@@ -1,0 +1,28 @@
+#General Config of the Serverbehavior
+flask_config:
+  host : '0.0.0.0'
+  port : 8443
+  ssl_context : 'adhoc'
+  upload_folder : '/etc/people-counter-server/docker_temp'
+
+#OpenPose configuration
+openpose_config:
+  dockermode : false
+  docker_container : 'openpose'
+  #disable to display result with value 0
+  op_param_display : 0
+  #OpenPose Model to use: COCO / BODY_25
+  op_param_model_pose : 'COCO'
+  #net resulution must by a multiple of 16 (can increase accurancy)
+  op_param_net_resolution : '-1x256'
+  #disable openpose logging with value 255
+  op_param_logging_level : 255
+  #special for OpenPose behavior (optional)
+  #reference: https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/include/openpose/flags.hpp
+  op_param_scale_number : 1.0
+  op_param_scale_gap : 0.25
+  op_param_model_folder : '/home/alex/openpose/models'
+  op_param_python_folder : '/usr/local/python'
+  op_param_use_faces : false
+  op_param_use_hands : false
+

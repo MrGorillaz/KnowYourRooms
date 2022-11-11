@@ -1,0 +1,59 @@
+#General Config of the Serverbehavior
+general_config:
+  start_hour: 6
+  end_hour: 22
+  influencer:
+  - testroom/sensor/people_counter/usage
+  - testroom/sensor/room/usage
+  default_workmode: 0
+  switch_master : 
+    - testroom/sensor/people_counter/usage
+  switch_max_counter: 3
+  switch_back_mode : 0
+  rooms : 
+  - testroom
+  - cisco_room
+#Config for MQTT-Server
+mqtt_config:
+  mqtt_server: 192.168.1.177
+  mqtt_port: 1883
+  mqtt_timeout: 60
+  mqtt_subs:
+    - testroom/sensor/+/usage
+    - testroom/sensor/+/usage_seat
+    - testroom/sensor/+/seat_detail
+    - testroom/sensor/+/rssi
+    - testroom/sensor/+/battery
+    - testroom/sensor/+/trigger
+    - testroom/sensor/+/temperature
+    - testroom/sensor/+/vibration_detail
+    - testroom/sensor/+/diff_gyro_x
+    - testroom/sensor/+/diff_gyro_y
+    - testroom/sensor/+/diff_gyro_z
+    - testroom/sensor/+/airquality
+    - testroom/sensor/+/pir
+    - testroom/sensor/+/sensor_mode
+    - testroom/sensor/+/humidity
+    - testroom/sensor/+/distance
+    - testroom/sensor/people_counter/#
+    - testroom/sensor/+/working_mode
+    - cisco_room/sensor/people_counter/#
+  mqtt_qos: 0
+  mqtt_tls_enable: false
+  mqtt_tls_port : 8888
+  mqtt_tls_ca_cert_file: my_ca.crt
+  #mqtt_tls_ca_cert_file: /etc/moquitto/ca_certs/my_ca.cert
+  #for future use
+  #mqtt_tls_server_cert_file : /etc/mosquitto/certs/my_server.cert
+  #mqtt_tls_server_key_file : /etc/mosquitto/certs/my_server.key
+  mqtt_tls_user_name: influencer
+  mqtt_tls_user_pass: influenceME
+
+#Config for InfluxDb
+influxdb_config:
+  influxdb_server: 192.168.1.177
+  influxdb_port: 8086
+  influxdb_tls_enable: true
+  influxdb_api_token: s7lWOiJA5IcrcnhDrcHJukxA_dr9lCY7UBpkp8fVu5FUnw4xiZr6TaHX7XH4lDgSpb9FJ3oEblJmmQUJr_ChqA==
+  influx_bucket: sensor_data
+  influx_org: sedus

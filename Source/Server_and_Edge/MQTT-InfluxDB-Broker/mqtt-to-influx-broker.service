@@ -1,0 +1,13 @@
+[Unit]
+Description=MQTT TO INFLUXDB Broker Service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 -u /opt/mqtt-to-influx-broker/mqtt-to-influx-broker.py
+StandardOutput=file:/var/log/mqtt-to-influx-broker/service.log
+StandardError=file:/var/log/mqtt-to-influx-broker/error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

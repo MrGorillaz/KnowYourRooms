@@ -1,0 +1,49 @@
+#General Config of the People-counter-behavior
+general_config:
+  start_hour: 0
+  end_hour: 24
+  use_camera_id : 0
+  #possible send_modes: MQTT, INFLUX
+  send_mode : MQTT
+  wait_seconds_short: 60
+  wait_seconds_long: 300
+  sleep_seconds: 6000
+  sw_picture : false
+
+#Config for OpenPose Endpoint
+openpose_config:
+  server : 192.168.98.128
+  port : 8443
+  protocol: https
+  #Possible working_modes : JSON, FILE
+  working_mode : JSON
+
+#Config for MQTT-Server
+mqtt_config:
+  mqtt_server: 192.168.178.36
+  mqtt_port: 1883
+  mqtt_timeout: 60
+  mqtt_qos: 0
+  mqtt_tls_enable: true
+  mqtt_tls_port : 8888
+  mqtt_tls_ca_cert_file: my_ca.crt
+  #mqtt_tls_ca_cert_file: /etc/moquitto/ca_certs/my_ca.cert
+  #for future use
+  #mqtt_tls_server_cert_file : /etc/mosquitto/certs/my_server.cert
+  #mqtt_tls_server_key_file : /etc/mosquitto/certs/my_server.key
+  mqtt_tls_user_name: influencer
+  mqtt_tls_user_pass: influenceME
+  mqtt_count_topic : testroom/sensor/people_counter/count
+  mqtt_usage_topic : testroom/sensor/people_counter/usage
+
+#Config for InfluxDb
+influxdb_config:
+  influxdb_server: 192.168.178.36
+  influxdb_port: 8086
+  influxdb_tls_enable: true
+  influxdb_api_token: cWFmcPImcclW0cnGn9ewKmYQxxXiNSJsPfHDMapNhGFqQfTrN7cIW9HVUOYusl-ujof1jtWSEDx0o9NRl7yHhw==
+  influx_bucket: sensor_data
+  influx_org: sedus
+  influx_count_topic: cisco_room/sensor/people_counter/count
+  influx_usage_topic: cisco_room/sensor/people_counter/usage
+

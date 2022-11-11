@@ -1,0 +1,13 @@
+[Unit]
+Description=BLE To MQTT Service
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python -u /opt/ble-mqtt-gateway.py
+StandardOutput=file:/var/log/ble-mqtt-gateway/service.log
+StandardError=file:/var/log/ble-mqtt-gateway/error.log
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,34 @@
+#General Config of the Serverbehavior
+genaral_config:
+  start_hour: 6
+  end_hour: 22
+  influencer:
+  - testroom/sensor/people_counter/count
+  - testroom/sensor/room/pir
+
+#Config for MQTT-Server
+mqtt_config:
+  mqtt_server: 192.168.178.36
+  mqtt_port: 1883
+  mqtt_timeout: 60
+  mqtt_subs:
+    - testroom/sensor/se_lab_hopper/usage
+    - testroom/sensor/se_lab_hopper/rssi
+    - testroom/sensor/se_lab_table/usage
+    - testroom/sensor/se_lab_table/rssi
+    - testroom/sensor/se_lab_board/usage
+    - testroom/sensor/se_lab_board/rssi
+    - testroom/sensor/people_counter/count
+    - testroom/sensor/room/usage
+    - testroom/sensor/room/temperature
+    - testroom/sensor/room/airquality
+    - testroom/sensor/room/pir
+  mqtt_qos: 0
+
+#Config for InfluxDb
+influxdb_config:
+  influxdb_server: 192.168.178.36
+  influxdb_port: 8086
+  influxdb_api_token: cWFmcPImcclW0cnGn9ewKmYQxxXiNSJsPfHDMapNhGFqQfTrN7cIW9HVUOYusl-ujof1jtWSEDx0o9NRl7yHhw==
+  influx_bucket: sensor_data
+  influx_org: sedus
