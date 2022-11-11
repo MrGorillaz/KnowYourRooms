@@ -26,10 +26,10 @@ This is a project I created for my bachelor thesis. It is intended to determine 
 
 ## Installation
 
-Install my-project with npm
 
 ```bash
   you will find installation bash scripts for every component
+  read the Documentation (only available in german for now )
 ```
     
 ## License
