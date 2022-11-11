@@ -5,8 +5,11 @@ This is a project I created for my bachelor thesis. It is intended to determine 
 
 ## Screenshots
 
+- Overview
 ![App Screenshot](https://github.com/MrGorillaz/KnowYourRooms/blob/master/schemas/KnowYourRooms_Overview.png?raw=true)
-
+ 
+- Peaple Counter
+![App Screenshot](https://github.com/MrGorillaz/KnowYourRooms/blob/master/schemas/KnowYourRooms_people_counter.png?raw=true)
 
 ## Features
 
