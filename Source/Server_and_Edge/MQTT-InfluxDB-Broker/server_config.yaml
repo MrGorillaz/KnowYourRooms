@@ -57,3 +57,9 @@ influxdb_config:
   influxdb_api_token: s7lWOiJA5IcrcnhDrcHJukxA_dr9lCY7UBpkp8fVu5FUnw4xiZr6TaHX7XH4lDgSpb9FJ3oEblJmmQUJr_ChqA==
   influx_bucket: sensor_data
   influx_org: sedus
+
+seconnects_config:
+  enabled: false
+  tenant_url: https://yourtenant.seconnects.net/
+  virt_gw_id: Your_Virt_GW
+  sensor_data_endpoint: https://sedus-gw-api.iot.kapschcloud.net/api/Data/uploadData

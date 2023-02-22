@@ -48,6 +48,11 @@ INFLUXDB_BUCKET = config['influxdb_config']['influx_bucket']
 INFLUXDB_ORG = config['influxdb_config']['influx_org']
 INFLUXDB_SECURE = False
 
+SECONNECTS_ENABLED = config['seconnects_config']['enabled']
+SECONNECTS_TENANT_URL = config['seconnects_config']['tenant_url']
+SECONNECTS_VIRT_GW = config['seconnects_config']['virt_gw_id']
+SECONNECTS_SENSOR_DATA_ENDPOINT = config['seconnects_config']['sensor_data_endpoint']
+
 try:
     INFLUXDB_SECURE = config['influxdb_config']['influxdb_tls_enable']
 except:
@@ -166,6 +171,13 @@ def on_message(client,userdata,msg):
                                             influx_org=INFLUXDB_ORG,
                                             influx_bucket=INFLUXDB_BUCKET,
                                             use_tls=INFLUXDB_SECURE)
+                if SECONNECTS_ENABLED:
+                    if str(msg.topic).find('usage') > 0:
+                        mod_sendData.send_seconnects_sensor_data(int(msg.payload.decode()),
+                                                                     SECONNECTS_SENSOR_DATA_ENDPOINT,
+                                                                     SECONNECTS_TENANT_URL,
+                                                                     SECONNECTS_VIRT_GW,
+                                                                     msg.topic)
                 break
             else:
                 break

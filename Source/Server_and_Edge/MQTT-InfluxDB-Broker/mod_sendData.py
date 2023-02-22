@@ -1,9 +1,11 @@
 from datetime import datetime
 from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
+from time import sleep, localtime, strftime,time
 import paho.mqtt.client as mqtt
 #disable SSL-CERT WARNINGS
 import requests
+import json
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
@@ -29,7 +31,7 @@ def sendInfluxData(data,timestamp,
         #setup InlfuxDB client
         write_api = client.write_api(write_options=SYNCHRONOUS)
         
-        #if now MQTT-Topic is given write simply the data
+        #if no MQTT-Topic is given write simply the data
         if mqtt_topic == None:
             
             point = Point("Testroom") \
@@ -74,6 +76,44 @@ def sendMQTTData_secure(MQTT_Server,topic,payload,mqtt_ca_cert,mqtt_secure_user,
     client.publish(topic,payload,retain=mqtt_retain)
     client.disconnect()
 
+#Send Seconnects Sensor Data
+def send_seconnects_sensor_data(data,sensor_data_endpoint,tenant_url,gw_device_id,mqtt_topic,sensor_type="desk",age=0,battery=101,count=999,rssi=-99,uptime=999):
+
+    data_points=mqtt_topic.split('/')
+    #check if the MQTT-Topics are in the wished format
+    if (len(data_points) <4):
+        print("invalid mqtt-format!")
+        return "err"
+
+    if(data_points[3] == 'usage'):
+        presense = data
+    else:
+        presense = 0
+
+    #get the last value which is the Sensor_mac
+    sensor_mac = data_points[2].split('_')[-1]
+
+    data={"chairs":[{
+            "age":int(age),
+            "battery":int(battery),
+            "count":int(count),
+            "fwvmajor":3,
+            "fwvminor":41,
+            "mac":sensor_mac,
+            "present":presense,
+            "rssi":int(rssi),
+            "type":str(sensor_type)}],
+            "deviceid":str(gw_device_id),
+            "timestamp":int(time()),
+            "uptime":int(uptime)}
+    
+    #Seconnects Sensor Gateway
+    data_url = sensor_data_endpoint
+    #data_url = 'https://sedus-gw-api.iot.kapschcloud.net/api/Data/uploadData'
+    resp = requests.post(data_url,verify=False,headers={"Accept":"application/json","Referer":str(tenant_url)},json=data)
+    jsondata_default = json.loads(resp.text)
+    return jsondata_default
 #testing
 if __name__ == '__main__':
-    sendInfluxData(15,1637959636,mqtt_topic='testroom/sensor/se_lab_hopper_badeaffebadeafffe/usage')
+    #sendInfluxData(15,1637959636,mqtt_topic='testroom/sensor/se_lab_hopper_badeaffebadeafffe/usage')
+    pass
