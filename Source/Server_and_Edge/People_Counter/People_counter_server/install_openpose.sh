@@ -12,3 +12,4 @@ cd build/
 sudo cmake -DGPU_MODE:String=CPU_ONLY -DDOWNLOAD_BODY_MPI_MODEL:Bool=ON -DDOWNLOAD_BODY_COCO_MODEL:Bool=ON -DDOWNLOAD_FACE_MODEL:Bool=ON -DDOWNLOAD_HAND_MODEL:Bool=ON -DUSE_PYTHON_INCLUDE_DIR=ON -DBUILD_PYTHON=ON -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
 sudo make
 sudo make install
+mv $HOME/KnowYourRooms/Source/Server_and_Edge/People_Counter/People_counter_server/openpose/ /opt/openpose/
