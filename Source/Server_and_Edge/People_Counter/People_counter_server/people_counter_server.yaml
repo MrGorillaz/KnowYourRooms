@@ -21,7 +21,7 @@ openpose_config:
   #reference: https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/include/openpose/flags.hpp
   op_param_scale_number : 1.0
   op_param_scale_gap : 0.25
-  op_param_model_folder : '/home/alex/openpose/models'
+  op_param_model_folder : '/opt/openpose/models'
   op_param_python_folder : '/usr/local/python'
   op_param_use_faces : false
   op_param_use_hands : false
