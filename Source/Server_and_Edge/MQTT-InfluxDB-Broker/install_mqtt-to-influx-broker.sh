@@ -41,7 +41,7 @@ echo ".. DONE"
 #Installing Service
 echo .
 echo .
-echo -n "Creating takePicture-Service ..."
+echo -n "Creating mqtt-to-influx-broker-Service ..."
 sudo chmod 644 /lib/systemd/system/mqtt-to-influx-broker.service
 sudo systemctl daemon-reload
 sudo systemctl enable mqtt-to-influx-broker.service
